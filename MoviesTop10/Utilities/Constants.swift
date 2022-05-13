@@ -6,3 +6,5 @@
 //
 
 import Foundation
+let baseURL  = "https://api.themoviedb.org/3/movie/"
+let API_KEY  = "api_key=e31023ca7a07ff97ae8dede026f9a082"
