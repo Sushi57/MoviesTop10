@@ -1,28 +1,30 @@
-//
-//  MovieViewModel.swift
-//  MoviesTop10
-//
-//  Created by SAKSHI TIWARI on 13/05/22.
-//
-
 import Foundation
-
 class MovieViewModel: ObservableObject {
     
-    var movies =  [Movie]()
+    @Published var movies: [Movie] =  []
+    var isLoadedAll = false
+    var currentPage = 0
+    let perPage = 20
     var dataManager: NetworkManagerProtocol
     
     init( dataManager: NetworkManagerProtocol = NetworkManager.shared) {
         self.dataManager = dataManager
-        getPopularMoviesList()
+        getPopularMoviesList(pageNo:1)
     }
     
     //MARK: - API Call
 
-    func getPopularMoviesList() {
-      dataManager.fetchPopularMovies { (movie,error) in
-            self.movies = movie.movies ?? [Movie]()
-            print(self.movies)
+    func getPopularMoviesList(pageNo:Int) {
+        dataManager.fetchPopularMovies(pageNo:pageNo) { (movie,error) in
+          self.movies  = movie.movies ?? [Movie]()
+          self.currentPage += 1
+            if self.movies.count < self.perPage {
+             self.isLoadedAll = true
+            }
+          let sortedUsers = self.movies.sorted {
+              ($0.voteCount ?? 0) > ($1.voteCount ?? 0)
+          }
+          self.movies = sortedUsers
         }
     }
     

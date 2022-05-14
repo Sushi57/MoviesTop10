@@ -1,8 +1,14 @@
-//
-//  MovieDetailView.swift
-//  MoviesTop10
-//
-//  Created by SAKSHI TIWARI on 13/05/22.
-//
 
-import Foundation
+import SwiftUI
+struct MovieDetailView: View {
+
+    var body: some View {
+    Text("Bittu")
+    }
+
+}
+struct MovieDetailView_Previews: PreviewProvider {
+ static var previews: some View {
+     MovieDetailView()
+ }
+}

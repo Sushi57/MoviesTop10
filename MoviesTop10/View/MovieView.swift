@@ -1,30 +1,29 @@
   
     import SwiftUI
-
+    import Kingfisher
     struct MovieView: View {
     @ObservedObject var viewModel = MovieViewModel()
-        let students = ["Harry", "Hermione", "Ron"]
-           @State private var selectedStudent = "Harry"
-
            var body: some View {
-               NavigationView {
-                   Form {
-                       Picker("Select your student", selection: $selectedStudent) {
-                           ForEach(viewModel.movies, id: \.id) {
-                               Text($0.title ?? "ok")
+               NavigationView{
+                   ScrollView{
+                       ForEach(viewModel.movies, id:\.id){ movie in
+                           VStack {
+                               KFImage(URL(string: "\(IMAGE_BASE_URL)original\(movie.posterPath ?? "NA")"))
+                                   .resizable()
+                                   .aspectRatio(contentMode: .fit)
+                                   .padding(5)
+                                   .onTapGesture {
+                                   }
                            }
+                           .padding(5)
                        }
+                    }.navigationTitle("Top 10 Movies")
                    }
-               }
+               
+               
+               
            }
-   /* var body: some View {
-      ForEach($viewModel.movies, id: \.id) { movie in
-        VStack {
-                Text(movie.originalTitle )
-                    .foregroundColor(.blue)
-                    }
-            }
-        }*/
+   
     }
 
     struct MovieView_Previews: PreviewProvider {
