@@ -1,21 +1,34 @@
-//
-//  ContentView.swift
-//  MoviesTop10
-//
-//  Created by SAKSHI TIWARI on 13/05/22.
-//
+  
+    import SwiftUI
 
-import SwiftUI
+    struct MovieView: View {
+    @ObservedObject var viewModel = MovieViewModel()
+        let students = ["Harry", "Hermione", "Ron"]
+           @State private var selectedStudent = "Harry"
 
-struct MovieView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+           var body: some View {
+               NavigationView {
+                   Form {
+                       Picker("Select your student", selection: $selectedStudent) {
+                           ForEach(viewModel.movies, id: \.id) {
+                               Text($0.title ?? "ok")
+                           }
+                       }
+                   }
+               }
+           }
+   /* var body: some View {
+      ForEach($viewModel.movies, id: \.id) { movie in
+        VStack {
+                Text(movie.originalTitle )
+                    .foregroundColor(.blue)
+                    }
+            }
+        }*/
     }
-}
 
-struct MovieView_Previews: PreviewProvider {
-    static var previews: some View {
+    struct MovieView_Previews: PreviewProvider {
+     static var previews: some View {
         MovieView()
+     }
     }
-}
