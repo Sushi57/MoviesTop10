@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 
-let IMAGE_BASE_URL  = "http://image.tmdb.org/t/p/"
 
 protocol NetworkManagerProtocol {
     func fetchPopularMovies(pageNo:Int,completion: @escaping (MovieListModel,Error?) -> Void)

@@ -29,4 +29,20 @@ init( dataManager: NetworkManagerProtocol = NetworkManager.shared) {
        
         return genres.joined(separator: " * ")
     }
+    
+    func getRatingRounded() -> String{
+        guard let x = detail?.voteAverage else { return "0"}
+        let stringRating = String(format:"%.1f", x)
+        //print(round(detail.voteAverage! * 1000) / 1000)
+       return stringRating
+    }
+    
+     func getRated() -> String {
+         guard let x = detail?.adult else { return "NA"}
+         if x {
+             return "(A|U)"
+         }
+         return "(U)"
+
+    }
 }

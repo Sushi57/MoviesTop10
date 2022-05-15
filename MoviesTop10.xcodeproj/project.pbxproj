@@ -31,6 +31,7 @@
 		8172F3F5282FB4D1004E850E /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 8172F3F4282FB4D1004E850E /* ObjectMapper */; };
 		81B48BC92830C787009159BD /* MovieImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B48BC72830C786009159BD /* MovieImageView.swift */; };
 		81B48BCC28312621009159BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B48BCB28312621009159BD /* Extensions.swift */; };
+		81B48BCE283144A9009159BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B48BCD283144A9009159BD /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		8172F3E0282E7CA1004E850E /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		81B48BC72830C786009159BD /* MovieImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieImageView.swift; sourceTree = "<group>"; };
 		81B48BCB28312621009159BD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		81B48BCD283144A9009159BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		81F7C9F62830361600925B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 			children = (
 				81B48BCB28312621009159BD /* Extensions.swift */,
 				8172F399282E5356004E850E /* NetworkManager.swift */,
+				81B48BCD283144A9009159BD /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8172F396282E52E6004E850E /* MovieListModel.swift in Sources */,
+				81B48BCE283144A9009159BD /* Constants.swift in Sources */,
 				8172F3DD282E784C004E850E /* SpokenLanguage.swift in Sources */,
 				8172F354282E503F004E850E /* MovieView.swift in Sources */,
 				8172F3DC282E784C004E850E /* Genre.swift in Sources */,
