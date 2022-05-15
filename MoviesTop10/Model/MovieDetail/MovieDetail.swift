@@ -5,7 +5,7 @@ import ObjectMapper
 
 
 class MovieDetail : NSObject, NSCoding, Mappable{
-
+    
     var adult : Bool?
     var backdropPath : String?
     var belongsToCollection : BelongsToCollection?
@@ -31,14 +31,14 @@ class MovieDetail : NSObject, NSCoding, Mappable{
     var video : Bool?
     var voteAverage : Float?
     var voteCount : Int?
-
-
+    
+    
     class func newInstance(map: Map) -> Mappable?{
         return MovieDetail()
     }
     required init?(map: Map){}
     private override init(){}
-
+    
     func mapping(map: Map)
     {
         adult <- map["adult"]
@@ -68,45 +68,45 @@ class MovieDetail : NSObject, NSCoding, Mappable{
         voteCount <- map["vote_count"]
         
     }
-
+    
     /**
-    * NSCoding required initializer.
-    * Fills the data from the passed decoder
-    */
+     * NSCoding required initializer.
+     * Fills the data from the passed decoder
+     */
     @objc required init(coder aDecoder: NSCoder)
     {
-         adult = aDecoder.decodeObject(forKey: "adult") as? Bool
-         backdropPath = aDecoder.decodeObject(forKey: "backdrop_path") as? String
-         belongsToCollection = aDecoder.decodeObject(forKey: "belongs_to_collection") as? BelongsToCollection
-         budget = aDecoder.decodeObject(forKey: "budget") as? Int
-         genres = aDecoder.decodeObject(forKey: "genres") as? [Genre]
-         homepage = aDecoder.decodeObject(forKey: "homepage") as? String
-         id = aDecoder.decodeObject(forKey: "id") as? Int
-         imdbId = aDecoder.decodeObject(forKey: "imdb_id") as? String
-         originalLanguage = aDecoder.decodeObject(forKey: "original_language") as? String
-         originalTitle = aDecoder.decodeObject(forKey: "original_title") as? String
-         overview = aDecoder.decodeObject(forKey: "overview") as? String
-         popularity = aDecoder.decodeObject(forKey: "popularity") as? Float
-         posterPath = aDecoder.decodeObject(forKey: "poster_path") as? String
-         productionCompanies = aDecoder.decodeObject(forKey: "production_companies") as? [ProductionCompany]
-         productionCountries = aDecoder.decodeObject(forKey: "production_countries") as? [ProductionCountry]
-         releaseDate = aDecoder.decodeObject(forKey: "release_date") as? String
-         revenue = aDecoder.decodeObject(forKey: "revenue") as? Int
-         runtime = aDecoder.decodeObject(forKey: "runtime") as? Int
-         spokenLanguages = aDecoder.decodeObject(forKey: "spoken_languages") as? [SpokenLanguage]
-         status = aDecoder.decodeObject(forKey: "status") as? String
-         tagline = aDecoder.decodeObject(forKey: "tagline") as? String
-         title = aDecoder.decodeObject(forKey: "title") as? String
-         video = aDecoder.decodeObject(forKey: "video") as? Bool
-         voteAverage = aDecoder.decodeObject(forKey: "vote_average") as? Float
-         voteCount = aDecoder.decodeObject(forKey: "vote_count") as? Int
-
+        adult = aDecoder.decodeObject(forKey: "adult") as? Bool
+        backdropPath = aDecoder.decodeObject(forKey: "backdrop_path") as? String
+        belongsToCollection = aDecoder.decodeObject(forKey: "belongs_to_collection") as? BelongsToCollection
+        budget = aDecoder.decodeObject(forKey: "budget") as? Int
+        genres = aDecoder.decodeObject(forKey: "genres") as? [Genre]
+        homepage = aDecoder.decodeObject(forKey: "homepage") as? String
+        id = aDecoder.decodeObject(forKey: "id") as? Int
+        imdbId = aDecoder.decodeObject(forKey: "imdb_id") as? String
+        originalLanguage = aDecoder.decodeObject(forKey: "original_language") as? String
+        originalTitle = aDecoder.decodeObject(forKey: "original_title") as? String
+        overview = aDecoder.decodeObject(forKey: "overview") as? String
+        popularity = aDecoder.decodeObject(forKey: "popularity") as? Float
+        posterPath = aDecoder.decodeObject(forKey: "poster_path") as? String
+        productionCompanies = aDecoder.decodeObject(forKey: "production_companies") as? [ProductionCompany]
+        productionCountries = aDecoder.decodeObject(forKey: "production_countries") as? [ProductionCountry]
+        releaseDate = aDecoder.decodeObject(forKey: "release_date") as? String
+        revenue = aDecoder.decodeObject(forKey: "revenue") as? Int
+        runtime = aDecoder.decodeObject(forKey: "runtime") as? Int
+        spokenLanguages = aDecoder.decodeObject(forKey: "spoken_languages") as? [SpokenLanguage]
+        status = aDecoder.decodeObject(forKey: "status") as? String
+        tagline = aDecoder.decodeObject(forKey: "tagline") as? String
+        title = aDecoder.decodeObject(forKey: "title") as? String
+        video = aDecoder.decodeObject(forKey: "video") as? Bool
+        voteAverage = aDecoder.decodeObject(forKey: "vote_average") as? Float
+        voteCount = aDecoder.decodeObject(forKey: "vote_count") as? Int
+        
     }
-
+    
     /**
-    * NSCoding required method.
-    * Encodes mode properties into the decoder
-    */
+     * NSCoding required method.
+     * Encodes mode properties into the decoder
+     */
     @objc func encode(with aCoder: NSCoder)
     {
         if adult != nil{
@@ -184,7 +184,7 @@ class MovieDetail : NSObject, NSCoding, Mappable{
         if voteCount != nil{
             aCoder.encode(voteCount, forKey: "vote_count")
         }
-
+        
     }
-
+    
 }

@@ -4,19 +4,19 @@ import ObjectMapper
 
 
 class BelongsToCollection : NSObject, NSCoding, Mappable{
-
+    
     var backdropPath : String?
     var id : Int?
     var name : String?
     var posterPath : String?
-
-
+    
+    
     class func newInstance(map: Map) -> Mappable?{
         return BelongsToCollection()
     }
     required init?(map: Map){}
     private override init(){}
-
+    
     func mapping(map: Map)
     {
         backdropPath <- map["backdrop_path"]
@@ -25,24 +25,24 @@ class BelongsToCollection : NSObject, NSCoding, Mappable{
         posterPath <- map["poster_path"]
         
     }
-
+    
     /**
-    * NSCoding required initializer.
-    * Fills the data from the passed decoder
-    */
+     * NSCoding required initializer.
+     * Fills the data from the passed decoder
+     */
     @objc required init(coder aDecoder: NSCoder)
     {
-         backdropPath = aDecoder.decodeObject(forKey: "backdrop_path") as? String
-         id = aDecoder.decodeObject(forKey: "id") as? Int
-         name = aDecoder.decodeObject(forKey: "name") as? String
-         posterPath = aDecoder.decodeObject(forKey: "poster_path") as? String
-
+        backdropPath = aDecoder.decodeObject(forKey: "backdrop_path") as? String
+        id = aDecoder.decodeObject(forKey: "id") as? Int
+        name = aDecoder.decodeObject(forKey: "name") as? String
+        posterPath = aDecoder.decodeObject(forKey: "poster_path") as? String
+        
     }
-
+    
     /**
-    * NSCoding required method.
-    * Encodes mode properties into the decoder
-    */
+     * NSCoding required method.
+     * Encodes mode properties into the decoder
+     */
     @objc func encode(with aCoder: NSCoder)
     {
         if backdropPath != nil{
@@ -57,7 +57,7 @@ class BelongsToCollection : NSObject, NSCoding, Mappable{
         if posterPath != nil{
             aCoder.encode(posterPath, forKey: "poster_path")
         }
-
+        
     }
-
+    
 }

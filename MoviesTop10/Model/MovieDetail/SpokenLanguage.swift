@@ -4,18 +4,18 @@ import ObjectMapper
 
 
 class SpokenLanguage : NSObject, NSCoding, Mappable{
-
+    
     var englishName : String?
     var iso6391 : String?
     var name : String?
-
-
+    
+    
     class func newInstance(map: Map) -> Mappable?{
         return SpokenLanguage()
     }
     required init?(map: Map){}
     private override init(){}
-
+    
     func mapping(map: Map)
     {
         englishName <- map["english_name"]
@@ -23,23 +23,23 @@ class SpokenLanguage : NSObject, NSCoding, Mappable{
         name <- map["name"]
         
     }
-
+    
     /**
-    * NSCoding required initializer.
-    * Fills the data from the passed decoder
-    */
+     * NSCoding required initializer.
+     * Fills the data from the passed decoder
+     */
     @objc required init(coder aDecoder: NSCoder)
     {
-         englishName = aDecoder.decodeObject(forKey: "english_name") as? String
-         iso6391 = aDecoder.decodeObject(forKey: "iso_639_1") as? String
-         name = aDecoder.decodeObject(forKey: "name") as? String
-
+        englishName = aDecoder.decodeObject(forKey: "english_name") as? String
+        iso6391 = aDecoder.decodeObject(forKey: "iso_639_1") as? String
+        name = aDecoder.decodeObject(forKey: "name") as? String
+        
     }
-
+    
     /**
-    * NSCoding required method.
-    * Encodes mode properties into the decoder
-    */
+     * NSCoding required method.
+     * Encodes mode properties into the decoder
+     */
     @objc func encode(with aCoder: NSCoder)
     {
         if englishName != nil{
@@ -51,7 +51,7 @@ class SpokenLanguage : NSObject, NSCoding, Mappable{
         if name != nil{
             aCoder.encode(name, forKey: "name")
         }
-
+        
     }
-
+    
 }

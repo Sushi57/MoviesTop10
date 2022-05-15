@@ -4,7 +4,6 @@ import Kingfisher
 
 struct MovieView: View {
     @ObservedObject var movieVM = MovieViewModel()
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -17,18 +16,21 @@ struct MovieView: View {
                             NavigationLink(destination: MovieDetailView(id: movie.id ?? 0)) {
                                 KFImage(URL.init(string: "\(IMAGE_BASE_URL)original\(movie.posterPath ?? "NA")"))
                                     .resizable()
-//                                    .aspectRatio(1, contentMode: .fill)
+                                //                                    .aspectRatio(1, contentMode: .fill)
                                     .cornerRadius(10)
                                     .padding(10)
                                     .scaledToFit()
-                                   
+                                
                             }
                         }
                     }
                 }
                 .navigationTitle("Top 10 Movies")
-               
-                
+                if(movieVM.dataManager.showIndicator()){
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle.init(tint: .black))
+                        .scaleEffect(2)
+                }
             }
             
         } .onAppear {

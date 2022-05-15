@@ -12,17 +12,28 @@ import Alamofire
 protocol NetworkManagerProtocol {
     func fetchPopularMovies(pageNo:Int,completion: @escaping (MovieListModel,Error?) -> Void)
     func fetchMovieDetails(movieId:String, completion: @escaping (MovieDetail,Error?) -> Void)
+    func showIndicator()->Bool
 }
 
 
 class NetworkManager {
+    
     static let shared: NetworkManagerProtocol = NetworkManager()
     let BASE_URL  = "https://api.themoviedb.org/3/"
     let API_KEY  = "api_key=e31023ca7a07ff97ae8dede026f9a082"
+    @Published var isLoading = false
+
     private init() { }
 }
 
 extension NetworkManager: NetworkManagerProtocol {
+    
+    //MARK: - Show Indicator
+
+    func showIndicator() -> Bool {
+        return self.isLoading
+    }
+    
 
     //MARK: - Popular Movie  API
 
@@ -30,9 +41,9 @@ extension NetworkManager: NetworkManagerProtocol {
         guard let url = URL(string: BASE_URL + "movie/popular?" + API_KEY + "&page=\(pageNo)") else {
             return
         }
-        print(url)
+        self.isLoading = true
         AF.request(url, method: .get, parameters: nil).responseString { response in
-        
+            self.isLoading = false
             if response.error != nil {
                 print("API Error-->", response.error?.errorDescription ?? "Error From \(url)")
                 return
@@ -54,8 +65,10 @@ extension NetworkManager: NetworkManagerProtocol {
         guard let url = URL(string: BASE_URL + "movie/\(movieId)?" + API_KEY) else{
             return
         }
-        print(url)
+        self.isLoading = true
         AF.request(url, method: .get, parameters: nil).responseString { response in
+            self.isLoading = false
+
             if response.error != nil {
                 print("API Error-->", response.error?.errorDescription ?? "Error From \(url)")
                 return

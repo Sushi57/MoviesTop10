@@ -15,14 +15,14 @@ struct MovieDetailView: View {
     {
         VStack(spacing:10){
             Spacer()
-            KFImage(URL.init(string: "\(IMAGE_BASE_URL)original\(movieDetailVM.detail?.posterPath ?? "NA")"))
+            KFImage(URL.init(string: "\(IMAGE_BASE_URL)original\(movieDetailVM.detail?.posterPath ?? "")"))
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(12)
             
             
             VStack{
-                Text("\(movieDetailVM.detail?.originalTitle ?? "NA")")
+                Text("\(movieDetailVM.detail?.originalTitle ?? "")")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .lineLimit(2)
@@ -58,14 +58,14 @@ struct MovieDetailView: View {
                 
             }
             
-             Text(movieDetailVM.fetchGenres())
-             .font(.footnote)
-             .fontWeight(.light)
-             .lineLimit(2)
-             .multilineTextAlignment(.center)
-             .padding(10)
-             
-        
+            Text(movieDetailVM.fetchGenres())
+                .font(.footnote)
+                .fontWeight(.light)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+                .padding(10)
+            
+            
             Text(movieDetailVM.detail?.overview ?? "")
                 .font(.body)
                 .padding()
@@ -83,6 +83,11 @@ struct MovieDetailView: View {
                     .cornerRadius(10)
             }).padding(20)
             
+            if(movieDetailVM.dataManager.showIndicator()){
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle.init(tint: .black))
+                    .scaleEffect(2)
+            }
         }.onAppear{
             movieDetailVM.getMovieDetails(movieId: "\(movieId)")
         }
