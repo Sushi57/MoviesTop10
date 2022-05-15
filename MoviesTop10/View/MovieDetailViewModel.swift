@@ -20,10 +20,13 @@ init( dataManager: NetworkManagerProtocol = NetworkManager.shared) {
     
     func fetchGenres() -> String{
         var genres = [String]()
-        detail.genres?.forEach({ genre in
-            genres.append(genre.name ?? "")
+        if let detail = detail {
+            detail.genres?.forEach({ genre in
+                genres.append(genre.name ?? "")
 
-        })
-        return genres.joined(separator: "|")
+            })
+        }
+       
+        return genres.joined(separator: " * ")
     }
 }
