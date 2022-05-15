@@ -1,13 +1,14 @@
 import Foundation
+import SwiftUI
 
 class MovieDetailViewModel: ObservableObject {
 
 @Published var detail: MovieDetail!
+    
 var dataManager: NetworkManagerProtocol
-
+    
 init( dataManager: NetworkManagerProtocol = NetworkManager.shared) {
     self.dataManager = dataManager
-    getMovieDetails(movieId:"55")
 }
 
 //MARK: - API Call
@@ -16,4 +17,13 @@ init( dataManager: NetworkManagerProtocol = NetworkManager.shared) {
             self.detail  = movieDetail
           })
       }
+    
+    func fetchGenres() -> String{
+        var genres = [String]()
+        detail.genres?.forEach({ genre in
+            genres.append(genre.name ?? "")
+
+        })
+        return genres.joined(separator: "|")
+    }
 }

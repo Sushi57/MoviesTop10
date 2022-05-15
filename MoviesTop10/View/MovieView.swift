@@ -2,24 +2,25 @@
 import SwiftUI
 import Kingfisher
 struct MovieView: View {
-    @ObservedObject var viewModel = MovieViewModel()
+    @ObservedObject var movieVM = MovieViewModel()
+    @ObservedObject var movieImageVM = MovieImageViewModel()
+    
     var body: some View {
-        
-        
         NavigationView{
-            ScrollView{
-                ForEach(viewModel.movies, id:\.id){ movie in
-                    VStack {
-                        KFImage(URL(string: "\(IMAGE_BASE_URL)original\(movie.posterPath ?? "NA")"))
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(5)
-                            .onTapGesture {
-                            }
-                    }
-                    .padding(5)
+            
+            List(movieVM.movies, id:\.id){ movie in
+                NavigationLink.init(destination: MovieDetailView(selectedMovie:movie)) {
+                    KFImage(URL.init(string: "\(IMAGE_BASE_URL)original\(movie.posterPath ?? "NA")"))
+                        .resizable()
+                        .cornerRadius(10)
+                        .scaledToFit()
                 }
-            }.navigationTitle("Top 10 Movies")
+                
+            }
+          
+            .onAppear(perform:{
+            })
+            .navigationTitle("Top 10 Movies")
         }
         
         
