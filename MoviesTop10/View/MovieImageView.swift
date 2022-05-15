@@ -1,5 +1,6 @@
 
 import SwiftUI
+
 struct MovieImageView: View {
     var body: some View {
         

@@ -179,7 +179,7 @@
 		8172F387282E5182004E850E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				81B48BC52830C738009159BD /* New Group */,
+				81B48BCA2830C943009159BD /* MovieImage */,
 				8172F389282E51A5004E850E /* Movie */,
 				8172F392282E528D004E850E /* MovieDetail */,
 			);
@@ -234,13 +234,13 @@
 			path = Movie;
 			sourceTree = "<group>";
 		};
-		81B48BC52830C738009159BD /* New Group */ = {
+		81B48BCA2830C943009159BD /* MovieImage */ = {
 			isa = PBXGroup;
 			children = (
 				81B48BC72830C786009159BD /* MovieImageView.swift */,
 				81B48BC62830C786009159BD /* MovieImageViewModel.swift */,
 			);
-			name = "New Group";
+			name = MovieImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
