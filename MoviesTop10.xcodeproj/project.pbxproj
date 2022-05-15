@@ -29,7 +29,6 @@
 		8172F3DF282E784C004E850E /* ProductionCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172F3D9282E784C004E850E /* ProductionCompany.swift */; };
 		8172F3E1282E7CA1004E850E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172F3E0282E7CA1004E850E /* Movie.swift */; };
 		8172F3F5282FB4D1004E850E /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 8172F3F4282FB4D1004E850E /* ObjectMapper */; };
-		81B48BC92830C787009159BD /* MovieImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B48BC72830C786009159BD /* MovieImageView.swift */; };
 		81B48BCC28312621009159BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B48BCB28312621009159BD /* Extensions.swift */; };
 		81B48BCE283144A9009159BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B48BCD283144A9009159BD /* Constants.swift */; };
 /* End PBXBuildFile section */
@@ -74,7 +73,6 @@
 		8172F3D8282E784C004E850E /* ProductionCountry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductionCountry.swift; sourceTree = "<group>"; };
 		8172F3D9282E784C004E850E /* ProductionCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductionCompany.swift; sourceTree = "<group>"; };
 		8172F3E0282E7CA1004E850E /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		81B48BC72830C786009159BD /* MovieImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieImageView.swift; sourceTree = "<group>"; };
 		81B48BCB28312621009159BD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		81B48BCD283144A9009159BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		81F7C9F62830361600925B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -179,7 +177,6 @@
 		8172F387282E5182004E850E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				81B48BCA2830C943009159BD /* MovieImage */,
 				8172F389282E51A5004E850E /* Movie */,
 				8172F392282E528D004E850E /* MovieDetail */,
 			);
@@ -234,14 +231,6 @@
 				8172F3E0282E7CA1004E850E /* Movie.swift */,
 			);
 			path = Movie;
-			sourceTree = "<group>";
-		};
-		81B48BCA2830C943009159BD /* MovieImage */ = {
-			isa = PBXGroup;
-			children = (
-				81B48BC72830C786009159BD /* MovieImageView.swift */,
-			);
-			name = MovieImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,7 +387,6 @@
 				8172F352282E503F004E850E /* MoviesTop10App.swift in Sources */,
 				81B48BCC28312621009159BD /* Extensions.swift in Sources */,
 				8172F3DE282E784C004E850E /* ProductionCountry.swift in Sources */,
-				81B48BC92830C787009159BD /* MovieImageView.swift in Sources */,
 				8172F38F282E5247004E850E /* MovieDetailView.swift in Sources */,
 				8172F3E1282E7CA1004E850E /* Movie.swift in Sources */,
 			);
@@ -488,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -616,7 +604,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -738,7 +726,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -49,6 +49,7 @@ extension NetworkManager: NetworkManagerProtocol {
         }
     }
     //MARK: - Movie Details API
+    
     func fetchMovieDetails(movieId:String, completion: @escaping (MovieDetail,Error?) -> Void){
         guard let url = URL(string: BASE_URL + "movie/\(movieId)?" + API_KEY) else{
             return

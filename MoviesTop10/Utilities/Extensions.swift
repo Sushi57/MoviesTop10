@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import SwiftUI
 
+//MARK: - HexToColour Function
+
 func hexStringToUIColor (hex:String) -> UIColor {
     var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
@@ -31,6 +33,7 @@ func hexStringToUIColor (hex:String) -> UIColor {
     )
 }
 
+//MARK: - Boxing Function
 
 final class Box<T> {
     

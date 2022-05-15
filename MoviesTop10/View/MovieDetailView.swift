@@ -38,14 +38,7 @@ struct MovieDetailView: View {
                 
                 
             }
-            /*HStack(spacing:10){
-             Text(movieDetailVM.fetchGenres())
-             .font(.body)
-             .fontWeight(.light)
-             .lineLimit(2)
-             .multilineTextAlignment(.center)
-             .padding(.horizontal)
-             }*/
+            
             HStack(spacing:10) {
                 Label.init(movieDetailVM.getRatingRounded(), systemImage: "star.fill")
                     .font(.subheadline)
@@ -64,6 +57,15 @@ struct MovieDetailView: View {
                 
                 
             }
+            
+             Text(movieDetailVM.fetchGenres())
+             .font(.footnote)
+             .fontWeight(.light)
+             .lineLimit(2)
+             .multilineTextAlignment(.center)
+             .padding(10)
+             
+        
             Text(movieDetailVM.detail?.overview ?? "")
                 .font(.body)
                 .padding()
@@ -79,7 +81,7 @@ struct MovieDetailView: View {
                     .background(Color(.red))
                     .foregroundColor(.white)
                     .cornerRadius(10)
-            })
+            }).padding(20)
             
         }.onAppear{
             movieDetailVM.getMovieDetails(movieId: "\(movieId)")
