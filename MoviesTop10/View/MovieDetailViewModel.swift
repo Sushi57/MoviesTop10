@@ -4,9 +4,10 @@ import SwiftUI
 class MovieDetailViewModel: ObservableObject {
     
     @Published var detail: MovieDetail!
-    
     var dataManager: NetworkManagerProtocol
     
+    //MARK: - Init Method NetworkManagerProtocol
+
     init( dataManager: NetworkManagerProtocol = NetworkManager.shared) {
         self.dataManager = dataManager
     }
