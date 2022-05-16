@@ -38,7 +38,6 @@ class MovieViewModel: ObservableObject {
             
             //Limiting to first 10 element.
             self.movies = Array(sortedUsers.prefix(upTo: 10))
-            print(self.movies.count)
         }
     }
     

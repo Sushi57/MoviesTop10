@@ -45,7 +45,6 @@ extension NetworkManager: NetworkManagerProtocol {
         AF.request(url, method: .get, parameters: nil).responseString { response in
             self.isLoading = false
             if response.error != nil {
-                print("API Error-->", response.error?.errorDescription ?? "Error From \(url)")
                 return
             }
             switch response.result {
@@ -70,7 +69,6 @@ extension NetworkManager: NetworkManagerProtocol {
             self.isLoading = false
 
             if response.error != nil {
-                print("API Error-->", response.error?.errorDescription ?? "Error From \(url)")
                 return
             }
             switch response.result {
