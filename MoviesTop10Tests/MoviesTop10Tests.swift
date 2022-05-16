@@ -6,15 +6,27 @@
 //
 
 import XCTest
-@testable import MoviesTop10
 
 class MoviesTop10Tests: XCTestCase {
 
+    private var sut:MovieDetailViewModel!
+    private var mockDataManager:MockDataManager!
+    
     override func setUpWithError() throws {
+        
+        mockDataManager = MockDataManager()
+        sut = MovieDetailViewModel.init(dataManager: mockDataManager)
+        
+        try super.setUpWithError()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
+        
+        sut = nil
+        mockDataManager = nil
+        
+        try super.tearDownWithError()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
@@ -33,4 +45,21 @@ class MoviesTop10Tests: XCTestCase {
         }
     }
 
+}
+class MockDataManager: NetworkManagerProtocol {
+    
+    func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel, Error?) -> Void) {
+       
+        
+    }
+    
+    func fetchMovieDetails(movieId: String, completion: @escaping (MovieDetail, Error?) -> Void) {
+       
+    }
+    
+    func showIndicator() -> Bool {
+        return true
+    }
+    
+    
 }
