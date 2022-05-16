@@ -7,7 +7,7 @@
 
 import Foundation
 import Alamofire
-
+import Combine
 
 protocol NetworkManagerProtocol {
     func fetchPopularMovies(pageNo:Int,completion: @escaping (MovieListModel,Error?) -> Void)
@@ -19,8 +19,6 @@ protocol NetworkManagerProtocol {
 class NetworkManager {
     
     static let shared: NetworkManagerProtocol = NetworkManager()
-    let BASE_URL  = "https://api.themoviedb.org/3/"
-    let API_KEY  = "api_key=e31023ca7a07ff97ae8dede026f9a082"
     @Published var isLoading = false
 
     private init() { }
@@ -38,6 +36,7 @@ extension NetworkManager: NetworkManagerProtocol {
     //MARK: - Popular Movie  API
 
     func fetchPopularMovies(pageNo:Int, completion: @escaping (MovieListModel,Error?) -> Void){
+    if(NetworkReachability.shared.isReachable){
         guard let url = URL(string: BASE_URL + "movie/popular?" + API_KEY + "&page=\(pageNo)") else {
             return
         }
@@ -58,9 +57,11 @@ extension NetworkManager: NetworkManagerProtocol {
             }
         }
     }
+    }
     //MARK: - Movie Details API
     
     func fetchMovieDetails(movieId:String, completion: @escaping (MovieDetail,Error?) -> Void){
+    if(NetworkReachability.shared.isReachable){
         guard let url = URL(string: BASE_URL + "movie/\(movieId)?" + API_KEY) else{
             return
         }
@@ -82,8 +83,9 @@ extension NetworkManager: NetworkManagerProtocol {
             }
         }
     }
-    
-    
+    }
     
 }
+
+
 

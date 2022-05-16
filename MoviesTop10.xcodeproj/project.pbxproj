@@ -29,6 +29,7 @@
 		81D563362832425B0078D918 /* SpokenLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D563292832425B0078D918 /* SpokenLanguage.swift */; };
 		81D563372832425B0078D918 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5632B2832425B0078D918 /* MovieDetailView.swift */; };
 		81D563382832425B0078D918 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5632C2832425B0078D918 /* MovieDetailViewModel.swift */; };
+		81D5633E283298DD0078D918 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5633D283298DD0078D918 /* NetworkReachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		81D563292832425B0078D918 /* SpokenLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpokenLanguage.swift; sourceTree = "<group>"; };
 		81D5632B2832425B0078D918 /* MovieDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		81D5632C2832425B0078D918 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
+		81D5633D283298DD0078D918 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		81F7C9F62830361600925B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 				8172F399282E5356004E850E /* NetworkManager.swift */,
 				81B48BCB28312621009159BD /* Extensions.swift */,
 				81B48BCD283144A9009159BD /* Constants.swift */,
+				81D5633D283298DD0078D918 /* NetworkReachability.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				81D563382832425B0078D918 /* MovieDetailViewModel.swift in Sources */,
 				81B48BCC28312621009159BD /* Extensions.swift in Sources */,
 				8172F3E1282E7CA1004E850E /* Movie.swift in Sources */,
+				81D5633E283298DD0078D918 /* NetworkReachability.swift in Sources */,
 				81D563322832425B0078D918 /* Genre.swift in Sources */,
 				81D563342832425B0078D918 /* MovieDetail.swift in Sources */,
 			);
@@ -496,7 +500,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesTop10/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IMAGE_BASE_URL = "";
+				IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original";
 				"IMAGE_BASE_URL[arch=*]" = "http://image.tmdb.org/t/p/original";
 				INFOPLIST_FILE = MoviesTop10/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -626,7 +630,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesTop10/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IMAGE_BASE_URL = "";
+				IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original";
 				"IMAGE_BASE_URL[arch=*]" = "http://image.tmdb.org/t/p/original";
 				INFOPLIST_FILE = MoviesTop10/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -756,7 +760,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesTop10/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IMAGE_BASE_URL = "";
+				IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original";
 				"IMAGE_BASE_URL[arch=*]" = "http://image.tmdb.org/t/p/original";
 				INFOPLIST_FILE = MoviesTop10/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -886,7 +890,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesTop10/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				IMAGE_BASE_URL = "";
+				IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original";
 				"IMAGE_BASE_URL[arch=*]" = "http://image.tmdb.org/t/p/original";
 				INFOPLIST_FILE = MoviesTop10/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

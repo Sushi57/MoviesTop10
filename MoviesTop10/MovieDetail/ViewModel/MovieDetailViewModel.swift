@@ -19,6 +19,9 @@ class MovieDetailViewModel: ObservableObject {
         })
     }
     
+   
+    
+    //MARK: - Helper Methods
     func fetchGenres() -> String{
         var genres = [String]()
         if let detail = detail {
@@ -30,8 +33,6 @@ class MovieDetailViewModel: ObservableObject {
         
         return genres.joined(separator: " * ")
     }
-    
-    //MARK: - Helper Methods
     
     func getRatingRounded() -> String{
         guard let x = detail?.voteAverage else { return "0"}
