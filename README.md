@@ -14,8 +14,8 @@ App Logo Link - https://www.freelogodesign.org
 
 //SECTION 1:  App Descritption
 
-• An app using the Themoviedatabase API’s to show popular movies currently.
-  This app displays posters of top 10 movies. When user selects a movie from the list, the app shows details of the movie.
+  *An app using the Themoviedatabase API’s to show popular movies currently.
+  This app displays posters of top 10 movies. When user selects a movie from the list, the app shows details of the movie.*
 
 //SECTION 2: Technical Specs
 
@@ -30,6 +30,6 @@ App Logo Link - https://www.freelogodesign.org
 //Section 3: Additional Features
 // These features can be extended as per use case
 
-• Multi Schema
+• Multi Schema & Multi Configuration
 • Pagination
 • Combine for Networking
