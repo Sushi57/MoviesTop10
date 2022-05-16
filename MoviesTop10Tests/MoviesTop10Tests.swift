@@ -6,7 +6,7 @@
 //
 
 import XCTest
-
+@testable import MoviesTop10
 class MoviesTop10Tests: XCTestCase {
 
     private var sut:MovieDetailViewModel!
@@ -47,7 +47,6 @@ class MoviesTop10Tests: XCTestCase {
 
 }
 class MockDataManager: NetworkManagerProtocol {
-    
     func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel, Error?) -> Void) {
        
         
@@ -55,6 +54,7 @@ class MockDataManager: NetworkManagerProtocol {
     
     func fetchMovieDetails(movieId: String, completion: @escaping (MovieDetail, Error?) -> Void) {
        
+        
     }
     
     func showIndicator() -> Bool {
