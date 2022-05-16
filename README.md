@@ -10,6 +10,8 @@ App Logo Link - https://www.freelogodesign.org
 
 #APPLICATION Details
 
+• Deployment Target(Min OS Support) - iOS 13.0
+
 //SECTION 1:  App Descritption
 
 • An app using the Themoviedatabase API’s to show popular movies currently.

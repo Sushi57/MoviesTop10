@@ -78,7 +78,7 @@ struct MovieDetailView: View {
                     .bold()
                     .font(.title2)
                     .frame(width: 280, height: 50, alignment: .center)
-                    .background(Color(.red))
+                    .background(Color(.systemGreen))
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }).padding(20)

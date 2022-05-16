@@ -30,7 +30,6 @@ class MovieViewModel: ObservableObject {
             }*/
             // Pagination (Extended Scope)
 
-            
             //Sorting Movies as per Vote Count
             let sortedUsers = self.movies.sorted {
                 ($0.voteCount ?? 0) > ($1.voteCount ?? 0)
