@@ -15,7 +15,7 @@ struct MovieDetailView: View {
     {
         VStack(spacing:10){
             Spacer()
-            KFImage(URL.init(string: "\(IMAGE_BASE_URL)original\(movieDetailVM.detail?.posterPath ?? "")"))
+            KFImage(URL.init(string: "\(IMAGE_BASE_URL)\(movieDetailVM.detail?.posterPath ?? "")"))
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(12)

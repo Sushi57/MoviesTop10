@@ -14,7 +14,7 @@ struct MovieView: View {
                     LazyVStack {
                         ForEach(movieVM.movies, id: \.id) { movie in
                             NavigationLink(destination: MovieDetailView(id: movie.id ?? 0)) {
-                                KFImage(URL.init(string: "\(IMAGE_BASE_URL)original\(movie.posterPath ?? "NA")"))
+                                KFImage(URL.init(string: "\(IMAGE_BASE_URL)\(movie.posterPath ?? "NA")"))
                                     .resizable()
                                 //                                    .aspectRatio(1, contentMode: .fill)
                                     .cornerRadius(10)

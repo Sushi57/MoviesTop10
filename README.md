@@ -8,7 +8,7 @@ App Logo Link - https://www.freelogodesign.org
 • After that use popular movies API call (https://api.themoviedb.org/3/movie/popular?api_key=YOUR_API_KEY&page=1)to fetch the movies. 
 • To get the movie details use get movie details API call (https://api.themoviedb.org/3/movie/414906?api_key=YOUR_API_KEY). 
 
-#APP Details
+#APPLICATION Details
 
 //SECTION 1:  App Descritption
 

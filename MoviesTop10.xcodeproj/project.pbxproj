@@ -31,6 +31,9 @@
 		8172F3F5282FB4D1004E850E /* ObjectMapper in Frameworks */ = {isa = PBXBuildFile; productRef = 8172F3F4282FB4D1004E850E /* ObjectMapper */; };
 		81B48BCC28312621009159BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B48BCB28312621009159BD /* Extensions.swift */; };
 		81B48BCE283144A9009159BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B48BCD283144A9009159BD /* Constants.swift */; };
+		81D56304283200220078D918 /* QAConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 81D56301283200220078D918 /* QAConfig.xcconfig */; };
+		81D56305283200220078D918 /* ReleaseConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 81D56302283200220078D918 /* ReleaseConfig.xcconfig */; };
+		81D56306283200220078D918 /* DebugConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 81D56303283200220078D918 /* DebugConfig.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		8172F3E0282E7CA1004E850E /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		81B48BCB28312621009159BD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		81B48BCD283144A9009159BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		81D56301283200220078D918 /* QAConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QAConfig.xcconfig; sourceTree = "<group>"; };
+		81D56302283200220078D918 /* ReleaseConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ReleaseConfig.xcconfig; sourceTree = "<group>"; };
+		81D56303283200220078D918 /* DebugConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
 		81F7C9F62830361600925B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +115,9 @@
 		8172F345282E503F004E850E = {
 			isa = PBXGroup;
 			children = (
+				81D56303283200220078D918 /* DebugConfig.xcconfig */,
+				81D56301283200220078D918 /* QAConfig.xcconfig */,
+				81D56302283200220078D918 /* ReleaseConfig.xcconfig */,
 				8172F350282E503F004E850E /* MoviesTop10 */,
 				8172F361282E5041004E850E /* MoviesTop10Tests */,
 				8172F36B282E5041004E850E /* MoviesTop10UITests */,
@@ -347,8 +356,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D56305283200220078D918 /* ReleaseConfig.xcconfig in Resources */,
 				8172F359282E5041004E850E /* Preview Assets.xcassets in Resources */,
+				81D56304283200220078D918 /* QAConfig.xcconfig in Resources */,
 				8172F356282E5041004E850E /* Assets.xcassets in Resources */,
+				81D56306283200220078D918 /* DebugConfig.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,15 +500,17 @@
 		};
 		81710B2B283045B700502F32 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81D56303283200220078D918 /* DebugConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				BASE_URL = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesTop10/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				IMAGE_BASE_URL = "";
+				"IMAGE_BASE_URL[arch=*]" = "http://image.tmdb.org/t/p/original";
 				INFOPLIST_FILE = MoviesTop10/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -616,15 +630,17 @@
 		};
 		81710B2F283045BF00502F32 /* QA */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81D56301283200220078D918 /* QAConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				BASE_URL = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesTop10/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				IMAGE_BASE_URL = "";
+				"IMAGE_BASE_URL[arch=*]" = "http://image.tmdb.org/t/p/original";
 				INFOPLIST_FILE = MoviesTop10/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -738,15 +754,17 @@
 		};
 		8172F374282E5041004E850E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81D56302283200220078D918 /* ReleaseConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				BASE_URL = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesTop10/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				IMAGE_BASE_URL = "";
+				"IMAGE_BASE_URL[arch=*]" = "http://image.tmdb.org/t/p/original";
 				INFOPLIST_FILE = MoviesTop10/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

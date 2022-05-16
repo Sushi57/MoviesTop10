@@ -6,5 +6,6 @@
 //
 
 import Foundation
-let IMAGE_BASE_URL  = "http://image.tmdb.org/t/p/"
+
+let IMAGE_BASE_URL  = Bundle.main.infoDictionary?["Image_URL"] ?? ""
 let SITE_URL = "https://www.themoviedb.org/movie"
