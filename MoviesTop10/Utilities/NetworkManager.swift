@@ -1,9 +1,3 @@
-//
-//  NetworkManager.swift
-//  MoviesTop10
-//
-//  Created by SAKSHI TIWARI on 13/05/22.
-//
 
 import Foundation
 import Alamofire
@@ -25,7 +19,7 @@ class NetworkManager {
 extension NetworkManager: NetworkManagerProtocol {
     
     
-   
+    
     
     //MARK: - Popular Movie  API
     
@@ -33,22 +27,22 @@ extension NetworkManager: NetworkManagerProtocol {
         if(NetworkReachability.shared.isReachable){
             AF.request(url, method: .get, parameters: nil).validate(statusCode: 200..<300)
                 .responseString { response in
-                if response.error != nil {
-                    failure(MTError.invalidData.genericString)
-                    return
-                }
-                switch response.result {
-                case .success(let responseString):
-                    guard  let movieModelObj = MovieListModel(JSONString: "\(responseString)") else {  
+                    if response.error != nil {
+                        failure(MTError.invalidData.genericString)
                         return
                     }
-                    completion(movieModelObj)
-                case .failure( _):
-                    failure(MTError.invalidResponse.genericString)
-                    
+                    switch response.result {
+                    case .success(let responseString):
+                        guard  let movieModelObj = MovieListModel(JSONString: "\(responseString)") else {  
+                            return
+                        }
+                        completion(movieModelObj)
+                    case .failure( _):
+                        failure(MTError.invalidResponse.genericString)
+                        
+                    }
                 }
-            }
-
+            
         }
         else {
             failure(MTError.networkLost.genericString)
@@ -56,34 +50,34 @@ extension NetworkManager: NetworkManagerProtocol {
         
     }
     //MARK: - Movie Details API
-
+    
     func fetchMovieDetails(url:URL,movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(String) -> Void) {
         if(NetworkReachability.shared.isReachable){
             AF.request(url, method: .get, parameters: nil).validate(statusCode: 200..<300)
-             .responseString { response in
-                
-                if response.error != nil {
-                    failure(MTError.invalidData.genericString)
-                    return
-                }
-                switch response.result {
-                case .success(let responseString):
-                    guard  let movieDetObj = MovieDetail(JSONString: "\(responseString)") else {
+                .responseString { response in
+                    
+                    if response.error != nil {
+                        failure(MTError.invalidData.genericString)
                         return
                     }
-                    completion(movieDetObj)
-                    
-                case .failure( _):
-                    failure(MTError.invalidResponse.genericString)
-
+                    switch response.result {
+                    case .success(let responseString):
+                        guard  let movieDetObj = MovieDetail(JSONString: "\(responseString)") else {
+                            return
+                        }
+                        completion(movieDetObj)
+                        
+                    case .failure( _):
+                        failure(MTError.invalidResponse.genericString)
+                        
+                    }
                 }
-            }
-       }
-    else {
-        failure(MTError.networkLost.genericString)
+        }
+        else {
+            failure(MTError.networkLost.genericString)
+        }
     }
-  }
-
+    
 }
 
- 
+

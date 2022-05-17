@@ -1,9 +1,3 @@
-//
-//  NetworkReachability.swift
-//  MoviesTop10
-//
-//  Created by SAKSHI TIWARI on 16/05/22.
-//
 
 import Alamofire
 
@@ -12,11 +6,11 @@ import Alamofire
 final class NetworkReachability {
     
     static let shared = NetworkReachability()
-
+    
     private let reachability = NetworkReachabilityManager(host: REACHABLE_HOST)!
-
+    
     typealias NetworkReachabilityStatus = NetworkReachabilityManager.NetworkReachabilityStatus
-
+    
     private init() {}
     
     /// Start observing reachability changes
@@ -52,22 +46,22 @@ final class NetworkReachability {
             break
         }
     }
-
+    
     /// returns current reachability status
     var isReachable: Bool {
         return reachability.isReachable
     }
-
+    
     /// returns if connected via cellular
     var isConnectedViaCellular: Bool {
         return reachability.isReachableOnCellular
     }
-
+    
     /// returns if connected via cellular
     var isConnectedViaWiFi: Bool {
         return reachability.isReachableOnEthernetOrWiFi
     }
-
+    
     deinit {
         stopListening()
     }

@@ -1,3 +1,4 @@
+
 import Foundation
 
 class MovieDetailViewModel: ObservableObject {
@@ -7,18 +8,18 @@ class MovieDetailViewModel: ObservableObject {
     @Published var errValue: String = ""
     
     var dataManager: NetworkManagerProtocol?
-
+    
     //MARK: - Init Method NetworkManagerProtocol
-
+    
     init( dataManager: NetworkManagerProtocol = NetworkManager.shared) {
         self.dataManager = dataManager
     }
     
     //MARK: - API Call
     func getMovieDetails(movieId:String, _ completion:(Bool)->Void) {
-     guard let url = URL(string: BASE_URL + "movie/\(movieId)?" + API_KEY) else{
+        guard let url = URL(string: BASE_URL + "movie/\(movieId)?" + API_KEY) else{
             self.errValue = MTError.invalidURL.genericString
-                return
+            return
         }
         isLoading = true
         dataManager?.fetchMovieDetails(url:url,movieId: movieId) {[weak self] (movieDetail) in
@@ -30,9 +31,9 @@ class MovieDetailViewModel: ObservableObject {
             self.isLoading = false
             self.errValue = error
         }
-
+        
     }
-  
+    
     
     //MARK: - Helper Methods
     func fetchGenres() -> String{

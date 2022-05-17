@@ -119,7 +119,7 @@ struct MovieDetailView: View {
                 movieDetailVM.getMovieDetails(movieId: "\(movieId)") { _ in
                     
                 }
-//                movieDetailVM.getMovieDetails(movieId: "\(movieId)", (Bool) -> Void)
+                //                movieDetailVM.getMovieDetails(movieId: "\(movieId)", (Bool) -> Void)
             }
         }
     }

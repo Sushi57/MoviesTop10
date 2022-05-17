@@ -1,9 +1,3 @@
-//
-//  MTError.swift
-//  MoviesTop10
-//
-//  Created by SAKSHI TIWARI on 17/05/22.
-//
 
 import Alamofire
 enum MTError: Error {
@@ -18,7 +12,7 @@ enum MTError: Error {
             return "The URL you have sent is not proper 😓"
         case .networkLost:
             return "You seem Ofline ‼️"
-
+            
         case .invalidResponse:
             return "The response seems improper 🤯"
         case .invalidData:

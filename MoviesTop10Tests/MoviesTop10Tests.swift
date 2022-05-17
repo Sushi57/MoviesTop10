@@ -8,7 +8,7 @@
 import XCTest
 @testable import MoviesTop10
 class MoviesTop10Tests: XCTestCase {
-
+    
     private var sut:MovieDetailViewModel!
     private var mockDataManager:MockDataManager!
     
@@ -20,7 +20,7 @@ class MoviesTop10Tests: XCTestCase {
         try super.setUpWithError()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDownWithError() throws {
         
         sut = nil
@@ -29,7 +29,7 @@ class MoviesTop10Tests: XCTestCase {
         try super.tearDownWithError()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     
     func testAPIModelType(){
         
@@ -40,16 +40,16 @@ class MoviesTop10Tests: XCTestCase {
             }
             
         }
-
+        
     }
-   
-
-
+    
+    
+    
 }
 class MockDataManager: NetworkManagerProtocol {
     var movList : MovieListModel?
     var movDet : MovieDetail?
-
+    
     func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping (String) -> Void) {
         if let movie = movList {
             completion(movie)

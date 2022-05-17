@@ -23,7 +23,7 @@ struct MovieView: View {
                         .fontWeight(.semibold)
                         .frame(alignment: .center)
                         .padding(20)
-                
+                    
                     Spacer()
                 }
                 

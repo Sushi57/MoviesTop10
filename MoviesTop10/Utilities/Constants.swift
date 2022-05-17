@@ -1,9 +1,3 @@
-//
-//  Constants.swift
-//  MoviesTop10
-//
-//  Created by SAKSHI TIWARI on 15/05/22.
-//
 
 import Foundation
 
@@ -21,9 +15,9 @@ let REACHABLE_HOST = "www.apple.com"
 
 //MARK: - Utilising Build Configurations
 #if QA
-    let SOME_SERVICE_KEY = "SomeKeyForQA"
+let SOME_SERVICE_KEY = "SomeKeyForQA"
 #elseif PROD
-    let SOME_SERVICE_KEY = "SomeKeyForPROD"
+let SOME_SERVICE_KEY = "SomeKeyForPROD"
 #else
-    let SOME_SERVICE_KEY = "SomeKey"
+let SOME_SERVICE_KEY = "SomeKey"
 #endif
