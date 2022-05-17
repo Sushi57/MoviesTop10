@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import MoviesTop10
-class MovieDetailModelTests: XCTestCase {
+class MovieDetailViewModelTests: XCTestCase {
     
     private var sut:MovieDetailViewModel!
     private var mockDataManager:MockDataManager!

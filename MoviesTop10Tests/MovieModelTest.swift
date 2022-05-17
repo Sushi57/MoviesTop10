@@ -1,14 +1,44 @@
+//
+//  MovieModelTest.swift
+//  MoviesTop10Tests
+//
+//  Created by SAKSHI TIWARI on 17/05/22.
+//
 
-import Foundation
-import ObjectMapper
+import XCTest
+@testable import MoviesTop10
+@testable import ObjectMapper
+
+class MovieModelTest: XCTestCase {
+    private var sut:MockMovie!
+
+    override func setUpWithError() throws {
+        sut = MockMovie()
+        try super.setUpWithError()
+
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+
+    override func tearDownWithError() throws {
+        sut = nil
+        try super.tearDownWithError()
+
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testVariables() throws {
+        let result = sut.id
+        XCTAssert(result != nil)
+    }
 
 
-class Movie : NSObject, NSCoding, Mappable{
+}
+class MockMovie : NSObject, NSCoding, Mappable{
     
     var adult : Bool?
     var backdropPath : String?
     var genreIds : [Int]?
-    var id : Int?
+    var id : Int? = 1
     var originalLanguage : String?
     var originalTitle : String?
     var overview : String?
@@ -20,16 +50,12 @@ class Movie : NSObject, NSCoding, Mappable{
     var voteAverage : Float?
     var voteCount : Int?
     
-    
-    class func newInstance(map: Map) -> Mappable?{
-        return Movie()
+    override init() {
+        
     }
     required init?(map: Map){}
-    
-    private override init(){}
-    
-    func mapping(map: Map)
-    {
+
+    func mapping(map: Map) {
         adult <- map["adult"]
         backdropPath <- map["backdrop_path"]
         genreIds <- map["genre_ids"]
@@ -47,10 +73,7 @@ class Movie : NSObject, NSCoding, Mappable{
         
     }
     
-    /**
-     * NSCoding required initializer.
-     * Fills the data from the passed decoder
-     */
+    
     @objc required init(coder aDecoder: NSCoder)
     {
         adult = aDecoder.decodeObject(forKey: "adult") as? Bool
@@ -121,4 +144,5 @@ class Movie : NSObject, NSCoding, Mappable{
         
     }
     
+  
 }
