@@ -178,11 +178,11 @@
 		8172F388282E518F004E850E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				8172F399282E5356004E850E /* NetworkManager.swift */,
-				81B48BCB28312621009159BD /* Extensions.swift */,
 				81B48BCD283144A9009159BD /* Constants.swift */,
+				8172F399282E5356004E850E /* NetworkManager.swift */,
 				81D5633D283298DD0078D918 /* NetworkReachability.swift */,
 				819F95462833B81B00A0BB40 /* MTError.swift */,
+				81B48BCB28312621009159BD /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
