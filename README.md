@@ -19,7 +19,7 @@ App Logo Link - https://www.freelogodesign.org
 
 //SECTION 2: Technical Specs
 
-• User Interface - SwiftUI 
+• User Interface - SwiftUI, Launch Screen
 • Swift 5
 • MVVM
 • ObjectMapper
@@ -32,4 +32,6 @@ App Logo Link - https://www.freelogodesign.org
 
 • Multi Schema & Multi Configuration
 • Pagination
-• Combine for Networking
+• Combine for Networking, Notifier etc.
+• Live Network Check
+
