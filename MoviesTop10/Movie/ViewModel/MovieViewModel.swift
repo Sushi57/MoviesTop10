@@ -1,9 +1,14 @@
 import Foundation
+
+
 class MovieViewModel: ObservableObject {
     
     @Published var movies: [Movie] =  []
+    @Published var isLoading = false
+    @Published var errValue: String = ""
+
     var dataManager: NetworkManagerProtocol
-    
+
     //MARK: - Pagination (Extended Scope)
     /*var isLoadedAll = false
     var currentPage = 0
@@ -20,8 +25,11 @@ class MovieViewModel: ObservableObject {
     //MARK: - API Call
     
     func getPopularMoviesList(pageNo:Int) {
-        dataManager.fetchPopularMovies(pageNo:pageNo) { (movie,error) in
-            self.movies  = movie.movies ?? [Movie]()
+        isLoading = true
+        dataManager.fetchPopularMovies(pageNo: pageNo) { [weak self] movieObj in
+            if let selfRef = self {
+                selfRef.isLoading = false
+                selfRef.movies  = movieObj.movies ?? [Movie]()
             
             // Pagination (Extended Scope)
             /*self.currentPage += 1
@@ -30,14 +38,20 @@ class MovieViewModel: ObservableObject {
             }*/
             // Pagination (Extended Scope)
 
+                
             //Sorting Movies as per Vote Count
-            let sortedUsers = self.movies.sorted {
+            let sortedUsers = selfRef.movies.sorted {
                 ($0.voteCount ?? 0) > ($1.voteCount ?? 0)
             }
             
             //Limiting to first 10 element.
-            self.movies = Array(sortedUsers.prefix(upTo: 10))
+            selfRef.movies = Array(sortedUsers.prefix(upTo: 10))
+            }
+        } failure: { error in
+            self.isLoading = false
+            self.errValue = error.localizedDescription
         }
+
     }
     
 }

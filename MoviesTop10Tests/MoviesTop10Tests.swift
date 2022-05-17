@@ -47,6 +47,7 @@ class MoviesTop10Tests: XCTestCase {
 
 }
 class MockDataManager: NetworkManagerProtocol {
+    
     func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel, Error?) -> Void) {
        
         

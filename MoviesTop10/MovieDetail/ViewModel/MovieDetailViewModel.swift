@@ -4,8 +4,11 @@ import SwiftUI
 class MovieDetailViewModel: ObservableObject {
     
     @Published var detail: MovieDetail!
-    var dataManager: NetworkManagerProtocol
+    @Published var isLoading = false
+    @Published var errValue: String = ""
     
+    var dataManager: NetworkManagerProtocol
+
     //MARK: - Init Method NetworkManagerProtocol
 
     init( dataManager: NetworkManagerProtocol = NetworkManager.shared) {
@@ -14,9 +17,17 @@ class MovieDetailViewModel: ObservableObject {
     
     //MARK: - API Call
     func getMovieDetails(movieId:String) {
-        dataManager.fetchMovieDetails(movieId: movieId, completion: { (movieDetail,error) in
-            self.detail  = movieDetail
-        })
+        isLoading = true
+        dataManager.fetchMovieDetails(movieId: movieId) {[weak self] (movieDetail) in
+            if let selfRef = self {
+                selfRef.isLoading = false
+                selfRef.detail  = movieDetail
+            }
+        } failure: { error in
+            self.isLoading = false
+            self.errValue = error.localizedDescription
+        }
+
     }
     
    
@@ -35,14 +46,14 @@ class MovieDetailViewModel: ObservableObject {
     }
     
     func getRatingRounded() -> String{
-        guard let x = detail?.voteAverage else { return "0"}
+        guard let x = detail?.voteAverage else { return ""}
         let stringRating = String(format:"%.1f", x)
         //print(round(detail.voteAverage! * 1000) / 1000)
         return stringRating
     }
     
     func getRated() -> String {
-        guard let x = detail?.adult else { return "NA"}
+        guard let x = detail?.adult else { return ""}
         if x {
             return "(A|U)"
         }
