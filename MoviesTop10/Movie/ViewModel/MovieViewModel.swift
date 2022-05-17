@@ -7,7 +7,7 @@ class MovieViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errValue: String = ""
     
-    var dataManager: NetworkManagerProtocol
+    var dataManager: NetworkManagerProtocol?
     
     //MARK: - Pagination (Extended Scope)
     /*var isLoadedAll = false
@@ -24,13 +24,17 @@ class MovieViewModel: ObservableObject {
     
     //MARK: - API Call
     
-    func getPopularMoviesList(pageNo:Int) {
+    func getPopularMoviesList(pageNo:Int, _ completion:(NetworkManagerProtocol?)->Void) {
         guard let url = URL(string: BASE_URL + "movie/popular?" + API_KEY + "&page=\(pageNo)") else {
             self.errValue = MTError.invalidURL.genericString
             return
         }
         isLoading = true
-        dataManager.fetchPopularMovies(url:url,pageNo: pageNo) { [weak self] movieObj in
+        guard let dataManagerObj = dataManager else {
+            completion(dataManager)
+            return
+        }
+        dataManagerObj.fetchPopularMovies(url:url,pageNo: pageNo) { [weak self] movieObj in
             if let selfRef = self {
                 selfRef.isLoading = false
                 selfRef.movies  = movieObj.movies ?? [Movie]()

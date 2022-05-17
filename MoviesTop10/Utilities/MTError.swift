@@ -16,7 +16,7 @@ enum MTError: Error {
         case .invalidResponse:
             return "The response seems improper 🤯"
         case .invalidData:
-            return  "Reasponse data can't be read ‼️"
+            return  "The resource you requested could not be found ‼️"
         }
     }
 }

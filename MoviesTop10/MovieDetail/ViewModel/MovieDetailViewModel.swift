@@ -16,13 +16,13 @@ class MovieDetailViewModel: ObservableObject {
     }
     
     //MARK: - API Call
-    func getMovieDetails(movieId:String, _ completion:(Bool)->Void) {
+    func getMovieDetails(movieId:String, _ completion:(NetworkManagerProtocol?)->Void) {
         guard let url = URL(string: BASE_URL + "movie/\(movieId)?" + API_KEY) else{
             self.errValue = MTError.invalidURL.genericString
             return
         }
         guard let dataManagerObj = dataManager else {
-            completion(false)
+            completion(dataManager)
             return 
         }
         isLoading = true

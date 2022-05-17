@@ -2,24 +2,22 @@
 import Foundation
 import Alamofire
 
+//MARK: - NetworkManagerProtocol
 
 protocol NetworkManagerProtocol {
     func fetchPopularMovies(url:URL,pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(String) -> Void)
     func fetchMovieDetails(url:URL,movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(String) -> Void)
 }
 
+//MARK: - NetworkManager
 
 class NetworkManager {
     
     static let shared: NetworkManagerProtocol = NetworkManager()
-    
     private init() { }
 }
 
 extension NetworkManager: NetworkManagerProtocol {
-    
-    
-    
     
     //MARK: - Popular Movie  API
     

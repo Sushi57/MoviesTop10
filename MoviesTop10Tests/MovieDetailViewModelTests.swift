@@ -33,17 +33,12 @@ class MovieDetailViewModelTests: XCTestCase {
     
     func testDataManager(){
         //        sut.dataManager = nil
-        let movieId = "4006"
-        sut.getMovieDetails(movieId: movieId) { status in
-            XCTAssertEqual(status, true)
+        let movieId = "235"
+        sut.getMovieDetails(movieId: movieId) { managerInstance in
+            XCTAssert(managerInstance != nil)
         }
         
     }
-    func testgetRated(){
-        let rated = sut.getRated()
-        XCTAssert(rated.count > 0)
-    }
-    
     
 }
 class MockDataManager: NetworkManagerProtocol {

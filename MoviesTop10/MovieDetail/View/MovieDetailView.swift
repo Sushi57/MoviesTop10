@@ -44,8 +44,10 @@ struct MovieDetailView: View {
                 Spacer()
                 KFImage(URL.init(string: "\(IMAGE_BASE_URL)\(movieDetailVM.detail?.posterPath ?? "")"))
                     .resizable()
+                    .loadDiskFileSynchronously()
+                    .fade(duration: 0.5)
                     .scaledToFit()
-                    .cornerRadius(12)
+                    .cornerRadius(10)
                 
                 
                 VStack{
@@ -119,7 +121,6 @@ struct MovieDetailView: View {
                 movieDetailVM.getMovieDetails(movieId: "\(movieId)") { _ in
                     
                 }
-                //                movieDetailVM.getMovieDetails(movieId: "\(movieId)", (Bool) -> Void)
             }
         }
     }

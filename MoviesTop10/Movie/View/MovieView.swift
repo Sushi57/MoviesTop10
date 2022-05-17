@@ -41,9 +41,13 @@ struct MovieView: View {
                                 NavigationLink(destination: MovieDetailView(id: movie.id ?? 0)) {
                                     KFImage(URL.init(string: "\(IMAGE_BASE_URL)\(movie.posterPath ?? "NA")"))
                                         .resizable()
+                                        .loadDiskFileSynchronously()
+                                        .fade(duration: 0.5)
                                         .cornerRadius(10)
                                         .padding(10)
                                         .scaledToFit()
+                                    
+                                    
                                     
                                 }
                             }
@@ -58,7 +62,9 @@ struct MovieView: View {
                 }
                 
             } .onAppear {
-                movieVM.getPopularMoviesList(pageNo: 1)
+                movieVM.getPopularMoviesList(pageNo: 1) { _ in
+                    
+                }
             }
         }
         
