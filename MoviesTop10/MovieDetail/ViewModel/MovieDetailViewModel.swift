@@ -21,8 +21,12 @@ class MovieDetailViewModel: ObservableObject {
             self.errValue = MTError.invalidURL.genericString
             return
         }
+        guard let dataManagerObj = dataManager else {
+            completion(false)
+            return 
+        }
         isLoading = true
-        dataManager?.fetchMovieDetails(url:url,movieId: movieId) {[weak self] (movieDetail) in
+        dataManagerObj.fetchMovieDetails(url:url,movieId: movieId) {[weak self] (movieDetail) in
             if let selfRef = self {
                 selfRef.isLoading = false
                 selfRef.detail  = movieDetail

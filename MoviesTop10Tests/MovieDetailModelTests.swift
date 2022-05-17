@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import MoviesTop10
-class MoviesTop10Tests: XCTestCase {
+class MovieDetailModelTests: XCTestCase {
     
     private var sut:MovieDetailViewModel!
     private var mockDataManager:MockDataManager!
@@ -31,32 +31,30 @@ class MoviesTop10Tests: XCTestCase {
     }
     
     
-    func testAPIModelType(){
-        
-        sut.dataManager = nil
-        sut.getMovieDetails(movieId: "\(556)") { state in
-            if state {
-                XCTAssert(false, "ViewModel should not be able to fetch without service")
-            }
-            
+    func testDataManager(){
+//        sut.dataManager = nil
+        let movieId = "4006"
+        sut.getMovieDetails(movieId: movieId) { status in
+            XCTAssertEqual(status, true)
         }
         
     }
-    
+    func testgetRated(){
+        let rated = sut.getRated()
+        XCTAssert(rated.count > 0)
+    }
     
     
 }
 class MockDataManager: NetworkManagerProtocol {
-    var movList : MovieListModel?
     var movDet : MovieDetail?
     
-    func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping (String) -> Void) {
-        if let movie = movList {
-            completion(movie)
-        }
+   
+    func fetchPopularMovies(url: URL, pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping (String) -> Void) {
+            
     }
     
-    func fetchMovieDetails(movieId: String, completion: @escaping (MovieDetail) -> Void, failure: @escaping (String) -> Void) {
+    func fetchMovieDetails(url: URL, movieId: String, completion: @escaping (MovieDetail) -> Void, failure: @escaping (String) -> Void) {
         if let movieDet = movDet {
             completion(movieDet)
         }
