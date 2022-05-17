@@ -15,14 +15,14 @@ enum MTError: Error {
     var genericString: String {
         switch self {
         case .invalidURL:
-            return "The URL you have sent is not proper."
+            return "The URL you have sent is not proper 😓"
         case .networkLost:
-            return "You seem Ofline!"
+            return "You seem Ofline ‼️"
 
         case .invalidResponse:
-            return "The response seems improper"
+            return "The response seems improper 🤯"
         case .invalidData:
-            return  "Data can't be read."
+            return  "Reasponse data can't be read ‼️"
         }
     }
 }

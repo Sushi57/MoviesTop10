@@ -10,8 +10,8 @@ import Alamofire
 
 
 protocol NetworkManagerProtocol {
-    func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(String) -> Void)
-    func fetchMovieDetails(movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(String) -> Void)
+    func fetchPopularMovies(url:URL,pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(String) -> Void)
+    func fetchMovieDetails(url:URL,movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(String) -> Void)
 }
 
 
@@ -29,12 +29,8 @@ extension NetworkManager: NetworkManagerProtocol {
     
     //MARK: - Popular Movie  API
     
-    func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(String) -> Void) {
+    func fetchPopularMovies(url:URL,pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(String) -> Void) {
         if(NetworkReachability.shared.isReachable){
-            guard let url = URL(string: BASE_URL + "movie/popular?" + API_KEY + "&page=\(pageNo)") else {
-                failure(MTError.invalidURL.genericString )
-                return
-            }
             AF.request(url, method: .get, parameters: nil).validate(statusCode: 200..<300)
                 .responseString { response in
                 if response.error != nil {
@@ -61,13 +57,8 @@ extension NetworkManager: NetworkManagerProtocol {
     }
     //MARK: - Movie Details API
 
-    func fetchMovieDetails(movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(String) -> Void) {
+    func fetchMovieDetails(url:URL,movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(String) -> Void) {
         if(NetworkReachability.shared.isReachable){
-        guard let url = URL(string: BASE_URL + "movie/\(movieId)?" + API_KEY) else{
-            failure(MTError.invalidURL.genericString )
-
-                return
-            }
             AF.request(url, method: .get, parameters: nil).validate(statusCode: 200..<300)
              .responseString { response in
                 

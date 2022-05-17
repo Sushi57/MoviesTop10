@@ -30,37 +30,36 @@ class MoviesTop10Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testAPIModelType(){
+        
+        sut.dataManager = nil
+        sut.getMovieDetails(movieId: "\(556)") { state in
+            if state {
+                XCTAssert(false, "ViewModel should not be able to fetch without service")
+            }
+            
         }
+
     }
+   
+
 
 }
 class MockDataManager: NetworkManagerProtocol {
-    
-    func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel, Error?) -> Void) {
-       
-        
+    var movList : MovieListModel?
+    var movDet : MovieDetail?
+
+    func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping (String) -> Void) {
+        if let movie = movList {
+            completion(movie)
+        }
     }
     
-    func fetchMovieDetails(movieId: String, completion: @escaping (MovieDetail, Error?) -> Void) {
-       
-        
+    func fetchMovieDetails(movieId: String, completion: @escaping (MovieDetail) -> Void, failure: @escaping (String) -> Void) {
+        if let movieDet = movDet {
+            completion(movieDet)
+        }
     }
-    
-    func showIndicator() -> Bool {
-        return true
-    }
-    
     
 }

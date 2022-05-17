@@ -6,7 +6,7 @@ class MovieDetailViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errValue: String = ""
     
-    var dataManager: NetworkManagerProtocol
+    var dataManager: NetworkManagerProtocol?
 
     //MARK: - Init Method NetworkManagerProtocol
 
@@ -15,9 +15,13 @@ class MovieDetailViewModel: ObservableObject {
     }
     
     //MARK: - API Call
-    func getMovieDetails(movieId:String) {
+    func getMovieDetails(movieId:String, _ completion:(Bool)->Void) {
+     guard let url = URL(string: BASE_URL + "movie/\(movieId)?" + API_KEY) else{
+            self.errValue = MTError.invalidURL.genericString
+                return
+        }
         isLoading = true
-        dataManager.fetchMovieDetails(movieId: movieId) {[weak self] (movieDetail) in
+        dataManager?.fetchMovieDetails(url:url,movieId: movieId) {[weak self] (movieDetail) in
             if let selfRef = self {
                 selfRef.isLoading = false
                 selfRef.detail  = movieDetail
@@ -28,8 +32,7 @@ class MovieDetailViewModel: ObservableObject {
         }
 
     }
-    
-   
+  
     
     //MARK: - Helper Methods
     func fetchGenres() -> String{

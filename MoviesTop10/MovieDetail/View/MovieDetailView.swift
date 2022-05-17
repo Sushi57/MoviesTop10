@@ -1,6 +1,7 @@
 
 import SwiftUI
 import Kingfisher
+
 struct MovieDetailView: View {
     
     @ObservedObject var movieDetailVM = MovieDetailViewModel()
@@ -115,7 +116,10 @@ struct MovieDetailView: View {
                         .scaleEffect(2)
                 }
             }.onAppear{
-                movieDetailVM.getMovieDetails(movieId: "\(movieId)")
+                movieDetailVM.getMovieDetails(movieId: "\(movieId)") { _ in
+                    
+                }
+//                movieDetailVM.getMovieDetails(movieId: "\(movieId)", (Bool) -> Void)
             }
         }
     }

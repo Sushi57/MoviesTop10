@@ -1,6 +1,5 @@
 import Foundation
 
-
 class MovieViewModel: ObservableObject {
     
     @Published var movies: [Movie] =  []
@@ -25,8 +24,12 @@ class MovieViewModel: ObservableObject {
     //MARK: - API Call
     
     func getPopularMoviesList(pageNo:Int) {
+     guard let url = URL(string: BASE_URL + "movie/popular?" + API_KEY + "&page=\(pageNo)") else {
+            self.errValue = MTError.invalidURL.genericString
+            return
+        }
         isLoading = true
-        dataManager.fetchPopularMovies(pageNo: pageNo) { [weak self] movieObj in
+        dataManager.fetchPopularMovies(url:url,pageNo: pageNo) { [weak self] movieObj in
             if let selfRef = self {
                 selfRef.isLoading = false
                 selfRef.movies  = movieObj.movies ?? [Movie]()
