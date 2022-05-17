@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct MoviesTop10App: App {
     var body: some Scene {
+        
         WindowGroup {
             MovieView()
             
@@ -18,4 +19,6 @@ struct MoviesTop10App: App {
     init(){
         NetworkReachability.shared.startListening()
     }
+    
+    
 }
