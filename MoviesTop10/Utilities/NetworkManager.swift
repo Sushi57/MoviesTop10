@@ -8,26 +8,6 @@
 import Foundation
 import Alamofire
 
-enum APError: Error {
-    case invalidURL
-    case networkLost
-    case invalidResponse
-    case invalidData
-    
-    var genericString: String {
-        switch self {
-        case .invalidURL:
-            return "The URL you have sent is not proper."
-        case .networkLost:
-            return "You seem Ofline!"
-
-        case .invalidResponse:
-            return "The response seems improper"
-        case .invalidData:
-            return  "Data can't be read."
-        }
-    }
-}
 
 protocol NetworkManagerProtocol {
     func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(String) -> Void)
@@ -52,13 +32,13 @@ extension NetworkManager: NetworkManagerProtocol {
     func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(String) -> Void) {
         if(NetworkReachability.shared.isReachable){
             guard let url = URL(string: BASE_URL + "movie/popular?" + API_KEY + "&page=\(pageNo)") else {
-                failure(APError.invalidURL.genericString )
+                failure(MTError.invalidURL.genericString )
                 return
             }
             AF.request(url, method: .get, parameters: nil).validate(statusCode: 200..<300)
                 .responseString { response in
                 if response.error != nil {
-                    failure(APError.invalidData.genericString)
+                    failure(MTError.invalidData.genericString)
                     return
                 }
                 switch response.result {
@@ -68,14 +48,14 @@ extension NetworkManager: NetworkManagerProtocol {
                     }
                     completion(movieModelObj)
                 case .failure( _):
-                    failure(APError.invalidResponse.genericString)
+                    failure(MTError.invalidResponse.genericString)
                     
                 }
             }
 
         }
         else {
-            failure(APError.networkLost.genericString)
+            failure(MTError.networkLost.genericString)
         }
         
     }
@@ -84,7 +64,7 @@ extension NetworkManager: NetworkManagerProtocol {
     func fetchMovieDetails(movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(String) -> Void) {
         if(NetworkReachability.shared.isReachable){
         guard let url = URL(string: BASE_URL + "movie/\(movieId)?" + API_KEY) else{
-            failure(APError.invalidURL.genericString )
+            failure(MTError.invalidURL.genericString )
 
                 return
             }
@@ -92,7 +72,7 @@ extension NetworkManager: NetworkManagerProtocol {
              .responseString { response in
                 
                 if response.error != nil {
-                    failure(APError.invalidData.genericString)
+                    failure(MTError.invalidData.genericString)
                     return
                 }
                 switch response.result {
@@ -103,13 +83,13 @@ extension NetworkManager: NetworkManagerProtocol {
                     completion(movieDetObj)
                     
                 case .failure( _):
-                    failure(APError.invalidResponse.genericString)
+                    failure(MTError.invalidResponse.genericString)
 
                 }
             }
        }
     else {
-        failure(APError.networkLost.genericString)
+        failure(MTError.networkLost.genericString)
     }
   }
 
