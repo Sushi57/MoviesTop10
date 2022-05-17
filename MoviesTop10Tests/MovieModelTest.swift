@@ -11,27 +11,27 @@ import XCTest
 
 class MovieModelTest: XCTestCase {
     private var sut:MockMovie!
-
+    
     override func setUpWithError() throws {
         sut = MockMovie()
         try super.setUpWithError()
-
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDownWithError() throws {
         sut = nil
         try super.tearDownWithError()
-
+        
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testVariables() throws {
         let result = sut.id
         XCTAssert(result != nil)
     }
-
-
+    
+    
 }
 class MockMovie : NSObject, NSCoding, Mappable{
     
@@ -54,7 +54,7 @@ class MockMovie : NSObject, NSCoding, Mappable{
         
     }
     required init?(map: Map){}
-
+    
     func mapping(map: Map) {
         adult <- map["adult"]
         backdropPath <- map["backdrop_path"]
@@ -144,5 +144,5 @@ class MockMovie : NSObject, NSCoding, Mappable{
         
     }
     
-  
+    
 }

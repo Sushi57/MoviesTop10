@@ -32,7 +32,7 @@ class MovieDetailViewModelTests: XCTestCase {
     
     
     func testDataManager(){
-//        sut.dataManager = nil
+        //        sut.dataManager = nil
         let movieId = "4006"
         sut.getMovieDetails(movieId: movieId) { status in
             XCTAssertEqual(status, true)
@@ -49,9 +49,9 @@ class MovieDetailViewModelTests: XCTestCase {
 class MockDataManager: NetworkManagerProtocol {
     var movDet : MovieDetail?
     
-   
+    
     func fetchPopularMovies(url: URL, pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping (String) -> Void) {
-            
+        
     }
     
     func fetchMovieDetails(url: URL, movieId: String, completion: @escaping (MovieDetail) -> Void, failure: @escaping (String) -> Void) {
