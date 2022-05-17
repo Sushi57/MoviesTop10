@@ -49,7 +49,7 @@ class MovieViewModel: ObservableObject {
             }
         } failure: { error in
             self.isLoading = false
-            self.errValue = error.localizedDescription
+            self.errValue = error
         }
 
     }

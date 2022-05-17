@@ -13,11 +13,25 @@ enum APError: Error {
     case networkLost
     case invalidResponse
     case invalidData
+    
+    var genericString: String {
+        switch self {
+        case .invalidURL:
+            return "The URL you have sent is not proper."
+        case .networkLost:
+            return "You seem Ofline!"
+
+        case .invalidResponse:
+            return "The response seems improper"
+        case .invalidData:
+            return  "Data can't be read."
+        }
+    }
 }
 
 protocol NetworkManagerProtocol {
-    func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(Error) -> Void)
-    func fetchMovieDetails(movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(Error) -> Void)
+    func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(String) -> Void)
+    func fetchMovieDetails(movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(String) -> Void)
 }
 
 
@@ -31,21 +45,20 @@ class NetworkManager {
 extension NetworkManager: NetworkManagerProtocol {
     
     
-    //MARK: - Show Indicator
-    
+   
     
     //MARK: - Popular Movie  API
     
-    func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(Error) -> Void) {
+    func fetchPopularMovies(pageNo: Int, completion: @escaping (MovieListModel) -> Void, failure: @escaping(String) -> Void) {
         if(NetworkReachability.shared.isReachable){
             guard let url = URL(string: BASE_URL + "movie/popular?" + API_KEY + "&page=\(pageNo)") else {
-                failure(APError.invalidURL )
+                failure(APError.invalidURL.genericString )
                 return
             }
             AF.request(url, method: .get, parameters: nil).validate(statusCode: 200..<300)
                 .responseString { response in
                 if response.error != nil {
-                    failure(APError.invalidData)
+                    failure(APError.invalidData.genericString)
                     return
                 }
                 switch response.result {
@@ -55,23 +68,23 @@ extension NetworkManager: NetworkManagerProtocol {
                     }
                     completion(movieModelObj)
                 case .failure( _):
-                    failure(APError.invalidResponse)
+                    failure(APError.invalidResponse.genericString)
                     
                 }
             }
 
         }
         else {
-            failure(APError.networkLost)
+            failure(APError.networkLost.genericString)
         }
         
     }
     //MARK: - Movie Details API
-    
-    func fetchMovieDetails(movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(Error) -> Void) {
-        NetworkReachability.shared.startListening()
+
+    func fetchMovieDetails(movieId:String, completion: @escaping (MovieDetail) -> Void, failure: @escaping(String) -> Void) {
+        if(NetworkReachability.shared.isReachable){
         guard let url = URL(string: BASE_URL + "movie/\(movieId)?" + API_KEY) else{
-            failure(APError.invalidURL )
+            failure(APError.invalidURL.genericString )
 
                 return
             }
@@ -79,7 +92,7 @@ extension NetworkManager: NetworkManagerProtocol {
              .responseString { response in
                 
                 if response.error != nil {
-                    failure(APError.invalidData)
+                    failure(APError.invalidData.genericString)
                     return
                 }
                 switch response.result {
@@ -90,15 +103,16 @@ extension NetworkManager: NetworkManagerProtocol {
                     completion(movieDetObj)
                     
                 case .failure( _):
-                    failure(APError.invalidResponse)
+                    failure(APError.invalidResponse.genericString)
 
                 }
             }
-        
+       }
+    else {
+        failure(APError.networkLost.genericString)
     }
-    
+  }
+
 }
-
-
 
  

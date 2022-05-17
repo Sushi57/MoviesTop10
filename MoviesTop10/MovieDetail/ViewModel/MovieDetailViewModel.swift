@@ -1,5 +1,4 @@
 import Foundation
-import SwiftUI
 
 class MovieDetailViewModel: ObservableObject {
     
@@ -25,7 +24,7 @@ class MovieDetailViewModel: ObservableObject {
             }
         } failure: { error in
             self.isLoading = false
-            self.errValue = error.localizedDescription
+            self.errValue = error
         }
 
     }
