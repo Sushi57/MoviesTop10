@@ -4,7 +4,7 @@ import Kingfisher
 
 struct MovieView: View {
     @ObservedObject var movieVM = MovieViewModel()
-
+    
     var body: some View {
         
         /*Text(movieVM.isOnline ? "Online" : "Offline")*/
@@ -47,7 +47,7 @@ struct MovieView: View {
                                         .loadDiskFileSynchronously()
                                         .cacheOriginalImage()
                                         .onFailure { error in
-                                       
+                                            
                                         }
                                         .cornerRadius(10)
                                         .padding(10)
@@ -78,6 +78,6 @@ struct MovieView: View {
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieView(movieVM: MovieViewModel())
+        MovieView()
     }
 }

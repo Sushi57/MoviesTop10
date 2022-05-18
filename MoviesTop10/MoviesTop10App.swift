@@ -6,7 +6,7 @@ struct MoviesTop10App: App {
     var body: some Scene {
         
         WindowGroup {
-            MovieView(movieVM: MovieViewModel()).navigationViewStyle(.stack)
+            MovieView().navigationViewStyle(.stack)
             
         }
     }

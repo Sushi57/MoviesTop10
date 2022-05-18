@@ -47,11 +47,11 @@ struct MovieDetailView: View {
                     .loadDiskFileSynchronously()
                     .cacheOriginalImage()
                     .onFailure { error in
-                   
+                        
                     }
                     .cornerRadius(10)
                     .scaledToFit()
-
+                
                 
                 
                 VStack{

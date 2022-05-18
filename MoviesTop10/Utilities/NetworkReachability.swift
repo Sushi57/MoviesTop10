@@ -7,7 +7,7 @@ import Combine
 final class NetworkReachability {
     
     @Published private (set) var isConnected: Bool = true
-
+    
     static let shared = NetworkReachability()
     
     private let reachability = NetworkReachabilityManager(host: REACHABLE_HOST)!
