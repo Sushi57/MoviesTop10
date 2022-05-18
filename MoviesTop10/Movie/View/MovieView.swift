@@ -4,7 +4,10 @@ import Kingfisher
 
 struct MovieView: View {
     @ObservedObject var movieVM = MovieViewModel()
+
     var body: some View {
+        
+        /*Text(movieVM.isOnline ? "Online" : "Offline")*/
         
         if(movieVM.errValue.count > 0){
             ZStack {
@@ -42,6 +45,10 @@ struct MovieView: View {
                                     KFImage(URL.init(string: "\(IMAGE_BASE_URL)\(movie.posterPath ?? "NA")"))
                                         .resizable()
                                         .loadDiskFileSynchronously()
+                                        .cacheOriginalImage()
+                                        .onFailure { error in
+                                       
+                                        }
                                         .cornerRadius(10)
                                         .padding(10)
                                         .scaledToFit()
@@ -71,6 +78,6 @@ struct MovieView: View {
 
 struct MovieView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieView()
+        MovieView(movieVM: MovieViewModel())
     }
 }

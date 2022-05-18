@@ -45,6 +45,10 @@ struct MovieDetailView: View {
                 KFImage(URL.init(string: "\(IMAGE_BASE_URL)\(movieDetailVM.detail?.posterPath ?? "")"))
                     .resizable()
                     .loadDiskFileSynchronously()
+                    .cacheOriginalImage()
+                    .onFailure { error in
+                   
+                    }
                     .cornerRadius(10)
                     .scaledToFit()
 

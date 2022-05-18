@@ -1,5 +1,6 @@
 
 import Foundation
+import Combine
 
 class MovieViewModel: ObservableObject {
     
@@ -7,6 +8,9 @@ class MovieViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errValue: String = ""
     
+    /*@Published var isOnline: Bool = true
+    private var connectivitySubscriber: AnyCancellable?*/
+
     var dataManager: NetworkManagerProtocol?
     
     //MARK: - Pagination (Extended Scope)
@@ -20,6 +24,10 @@ class MovieViewModel: ObservableObject {
     
     init( dataManager: NetworkManagerProtocol = NetworkManager.shared) {
         self.dataManager = dataManager
+        
+        /*connectivitySubscriber =  NetworkReachability.shared.$isConnected.sink(receiveValue: { [weak self](isConnected) in
+            self?.isOnline = isConnected
+        })*/
     }
     
     //MARK: - API Call

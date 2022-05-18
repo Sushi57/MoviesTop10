@@ -1,10 +1,13 @@
 
 import Alamofire
+import Combine
 
 // MARK: NetworkReachability
 
 final class NetworkReachability {
     
+    @Published private (set) var isConnected: Bool = true
+
     static let shared = NetworkReachability()
     
     private let reachability = NetworkReachabilityManager(host: REACHABLE_HOST)!
@@ -39,9 +42,9 @@ final class NetworkReachability {
     private func updateReachabilityStatus(_ status: NetworkReachabilityStatus) {
         switch status {
         case .notReachable:
-            print("Internet not available")
+            self.isConnected = false
         case .reachable(.ethernetOrWiFi), .reachable(.cellular):
-            print("Internet available")
+            self.isConnected = true
         case .unknown:
             break
         }
